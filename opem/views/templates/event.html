@@ -3,11 +3,11 @@
     <span class="event__title">{{ event.name }}</span>
     <span class="event__venue" ng-if="event.venue">{{ event.venue }}</span>
     <span class="event__location">{{ event.location }}</span>
-    <span class="event__time">{{ event.time_start | date: 'MMM d, y h:mm a' }}</span>
+    <span class="event__time">{{ event.date | date: 'MMM d, y' }} {{ event.time_start | date: 'h:mm a' }}</span>
     <div class="event__signup">
       <span class="event__signup--text">Signup Window - </span>
-      <span class="event__signup--start">{{ event.signup_start | date: 'MMM d, y h:mm a' }}</span> to
-      <span class="event__signup--end">{{ event.signup_end | date: 'MMM d, y h:mm a' }}</span>
+      <span class="event__signup--start">{{ event.signup_start | date: 'h:mm a' }}</span> to
+      <span class="event__signup--end">{{ event.signup_end | date: 'h:mm a' }}</span>
     </div>
     <span class="event__spots">Spots remaining - <span class="event__spots--number">{{ event.spots_left }}</span></span>
     

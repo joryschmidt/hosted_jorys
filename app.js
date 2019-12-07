@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var bluebird = require('bluebird');
 var sessions = require('client-sessions');
+require('dotenv').config();
 
 // Database connection
 
@@ -84,7 +85,7 @@ app.use('/opem/', opem_main);
 app.use('/', express.static(__dirname));
 
 
-var port = process.env.PORT || 443;
+var port = process.env.PORT || 80;
 
 app.listen(port, function() {
   console.log('App listening on port', port);
@@ -108,3 +109,4 @@ function requireOpemLogin(req, res, next) {
   if (req.session.opem_user) next();
   else res.status(404).json(null);
 }
+

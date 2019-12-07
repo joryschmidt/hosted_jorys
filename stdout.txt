@@ -1,0 +1,16 @@
+App listening on port 80
+(node:24054) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+[0mGET /opem/login [36m304 [0m4.669 ms - -[0m
+[0mGET /opem/css/style.css [36m304 [0m0.969 ms - -[0m
+[0mGET /opem/img/sprite.svg [36m304 [0m0.780 ms - -[0m
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+TypeError: Cannot set property 'opem_user' of undefined
+    at /home/bitnami/jorys/opem/controllers/user.controller.js:50:29
+    at /home/bitnami/jorys/node_modules/mongoose/lib/model.js:4598:16
+    at /home/bitnami/jorys/node_modules/mongoose/lib/query.js:4351:12
+    at process.nextTick (/home/bitnami/jorys/node_modules/mongoose/lib/query.js:2849:28)
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)

@@ -357,8 +357,10 @@ function runGame(plans, Display) {
 				startLevel(n);
 			else if (n < plans.length -1)
 				startLevel(n + 1);
-			else 
+			else {
 				console.log('You win!');
+				document.write('<h1>You win!</h1>');
+			}
 		});
 	}
 	startLevel(0);
