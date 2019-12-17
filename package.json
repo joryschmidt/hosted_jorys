@@ -23,6 +23,8 @@
     "client-sessions": "^0.8.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "express-force-ssl": "^0.3.2",
+    "fs": "0.0.1-security",
     "md5": "^2.2.1",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",

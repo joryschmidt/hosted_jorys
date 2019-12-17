@@ -5,6 +5,10 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var bluebird = require('bluebird');
 var sessions = require('client-sessions');
+var http = require('http');
+var https = require('https');
+var fs = require('fs');
+var forcessl = require('express-force-ssl');
 require('dotenv').config();
 
 // Database connection
@@ -34,6 +38,7 @@ app.use(sessions({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+app.use(forcessl);
 
 
 
@@ -85,11 +90,24 @@ app.use('/opem/', opem_main);
 app.use('/', express.static(__dirname));
 
 
-var port = process.env.PORT || 80;
+// SERVER
+var key = fs.readFileSync('/etc/letsencrypt/archive/jorys.io/privkey1.pem').toString(); 
+var cert = fs.readFileSync('/etc/letsencrypt/archive/jorys.io/cert1.pem').toString();
+var ca = fs.readFileSync('/etc/letsencrypt/archive/jorys.io/chain1.pem').toString();
+var credentials = {
+	key: key,
+	cert: cert,
+	ca: ca
+};
 
-app.listen(port, function() {
-  console.log('App listening on port', port);
-});
+
+http.createServer(app).listen(80);
+https.createServer(credentials, app).listen(443);
+
+
+//app.listen(port, function() {
+ // console.log('App listening on port', port);
+//});
 
 // Custom middleware
 function requireAdmin(req, res, next) {
